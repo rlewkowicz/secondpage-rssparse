@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'FBKey@index');
+
+Route::get('/login', 'FBKey@login');
 
 Route::get('/{slug}', 'FeedController@index');

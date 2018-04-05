@@ -5,14 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use FeedIo\Factory;
 use Storage;
-
-
+use GuzzleHttp\Client;
 
 class FeedController extends Controller
 {
     public function index($slug)
     {
-        $catagories = [
+        $categories = [
         "Politics" =>
           [
             "Washington Post" => "http://feeds.washingtonpost.com/rss/politics",
@@ -26,7 +25,7 @@ class FeedController extends Controller
         "Sports" =>
           [
             "Washington Post" => "http://feeds.washingtonpost.com/rss/sports",
-            "Sports" => "https://www.nytimes.com/services/xml/rss/nyt/Sports.xml"
+            "New York Times" => "https://www.nytimes.com/services/xml/rss/nyt/Sports.xml"
           ],
         "National" =>
           [
@@ -58,7 +57,8 @@ class FeedController extends Controller
           [
             "TechCrunch" => "http://feeds.feedburner.com/TechCrunch/",
             "Wall Street Journal" => "http://www.wsj.com/xml/rss/3_7455.xml",
-            "New York Times" => "http://feeds.nytimes.com/nyt/rss/Technology"
+            "New York Times" => "http://feeds.nytimes.com/nyt/rss/Technology",
+            "Hacker News" => "https://news.ycombinator.com/rss"
           ],
         "Markets" =>
           [
@@ -68,24 +68,32 @@ class FeedController extends Controller
         "Science" =>
           [
             "New York Times" => "http://rss.nytimes.com/services/xml/rss/nyt/Science.xml",
+            "BBC" => "http://feeds.bbci.co.uk/news/video_and_audio/science_and_environment/rss.xml"
           ]
       ];
-        if (! isset($catagories[$slug])) {
+
+        $consul_url = 'http://127.0.0.1:8500';
+        $client = new Client(['base_uri' => $consul_url]);
+        $client->request('PUT', '/v1/kv/categories', ['body' => json_encode($categories)]);
+
+        $content=file_get_contents("http://127.0.0.1:8500/v1/kv/categories");
+        $data=get_object_vars(json_decode($content)[0]);
+        $categories=(array)json_decode(base64_decode($data["Value"], true));
+
+
+        if (! isset($categories[$slug])) {
             return "Error: The requested category does not exist";
         }
 
-        // $filename=key($catagories[$slug]).".timestamp";
-        // date_default_timezone_set('America/New_York');
-        //
         $d = new \DateTime();
 
         $publications = [];
 
-        foreach ($catagories[$slug] as $publicationKey => $publication) {
+        foreach ($categories[$slug] as $publicationKey => $publication) {
             $filename=$publicationKey.$slug.".timestamp";
-            if (!Storage::disk('public')->exists($filename)){
-              $n = new \DateTime('2000-01-01 00:00:00');
-              Storage::disk('public')->put($filename, $n->format('Y-m-d H:i:s'));
+            if (!Storage::disk('public')->exists($filename)) {
+                $n = new \DateTime('2000-01-01 00:00:00');
+                Storage::disk('public')->put($filename, $n->format('Y-m-d H:i:s'));
             }
             $feedIo = Factory::create()->getFeedIo();
             $olddate = new \DateTime(Storage::disk('public')->get($filename));
@@ -96,7 +104,7 @@ class FeedController extends Controller
         }
 
         $shell=[
-        "catagory" => $slug,
+        "category" => $slug,
         "publications" => $publications
         ];
         return $shell;
