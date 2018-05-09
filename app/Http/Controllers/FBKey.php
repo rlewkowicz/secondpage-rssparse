@@ -28,9 +28,14 @@ class FBKey extends Controller
             exit;
         }
 
+        $response =  $fb->get('/me?fields=id,name', (string) $accessToken);
+        $user = $response->getGraphUser();
+
+
         if (isset($accessToken)) {
             // Logged in!
             $_SESSION['facebook_access_token'] = (string) $accessToken;
+            $_SESSION['facebook_uid'] = $user['id'];
 
         // Now you can redirect to another page and use the
     // access token from $_SESSION['facebook_access_token']
@@ -41,8 +46,8 @@ class FBKey extends Controller
         $consul_url = 'http://127.0.0.1:8500';
         $client = new Client(['base_uri' => $consul_url]);
         $client->request('PUT', '/v1/kv/fbkey', ['body' => $accessToken]);
-        
-        return $accessToken;
+
+        return $_SESSION;
     }
     public function login()
     {

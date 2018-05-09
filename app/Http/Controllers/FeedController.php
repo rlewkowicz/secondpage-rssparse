@@ -58,7 +58,7 @@ class FeedController extends Controller
             "TechCrunch" => "http://feeds.feedburner.com/TechCrunch/",
             "Wall Street Journal" => "http://www.wsj.com/xml/rss/3_7455.xml",
             "New York Times" => "http://feeds.nytimes.com/nyt/rss/Technology",
-            "Hacker News" => "https://news.ycombinator.com/rss"
+            // "Hacker News" => "https://news.ycombinator.com/rss"
           ],
         "Markets" =>
           [
@@ -96,6 +96,7 @@ class FeedController extends Controller
                 Storage::disk('public')->put($filename, $n->format('Y-m-d H:i:s'));
             }
             $feedIo = Factory::create()->getFeedIo();
+            $feedIo->getDateTimeBuilder()->setFeedTimezone(new \DateTimeZone('America/New_York'));
             $olddate = new \DateTime(Storage::disk('public')->get($filename));
             $dateDiff= $olddate->getTimestamp()-$d->getTimestamp();
             $result = $feedIo->readSince($publication, new \DateTime($dateDiff." seconds"))->getFeed();
