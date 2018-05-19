@@ -90,18 +90,25 @@ class FeedController extends Controller
         $publications = [];
 
         foreach ($categories[$slug] as $publicationKey => $publication) {
-            $filename=$publicationKey.$slug.".timestamp";
-            if (!Storage::disk('public')->exists($filename)) {
-                $n = new \DateTime('2000-01-01 00:00:00');
-                Storage::disk('public')->put($filename, $n->format('Y-m-d H:i:s'));
+            $timestamp=0;
+            $filename=$publicationKey.$slug;
+            $timestampget=@file_get_contents("http://127.0.0.1:8500/v1/kv/".rawurlencode($filename));
+            if ($timestampget){
+              $timestampgetobject=get_object_vars(json_decode($timestampget)[0]);
+              $timestamp=new \DateTime(base64_decode($timestampgetobject["Value"], true));
+            }
+            if (!$timestamp) {
+              $n = new \DateTime('2000-01-01 00:00:00');
+              $timestamp = $n;
+              $client->request('PUT', '/v1/kv/'.$filename, ['body' => (string)$n->format('Y-m-d H:i:s')]);
             }
             $feedIo = Factory::create()->getFeedIo();
             $feedIo->getDateTimeBuilder()->setFeedTimezone(new \DateTimeZone('America/New_York'));
-            $olddate = new \DateTime(Storage::disk('public')->get($filename));
+            $olddate = $timestamp;
             $dateDiff= $olddate->getTimestamp()-$d->getTimestamp();
             $result = $feedIo->readSince($publication, new \DateTime($dateDiff." seconds"))->getFeed();
             $publications[$publicationKey] = $result;
-            Storage::disk('public')->put($filename, $d->format('Y-m-d H:i:s'));
+            $client->request('PUT', '/v1/kv/'.$filename, ['body' => (string)$d->format('Y-m-d H:i:s')]);
         }
 
         $shell=[

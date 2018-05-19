@@ -4,20 +4,71 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a4f281c03657e6f3a0a48c9e959897be",
+    "content-hash": "8576e4cb7432e1a371592fbb00c4bbeb",
     "packages": [
         {
-            "name": "debril/feed-io",
-            "version": "v4.1.2",
+            "name": "datastax/php-driver",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/alexdebril/feed-io.git",
-                "reference": "f0e4dd6295163529a912ba765ba9c43f70181e77"
+                "url": "https://github.com/datastax/php-driver.git",
+                "reference": "b3803ce60bdcb0676386e8eff1893316bb57be4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alexdebril/feed-io/zipball/f0e4dd6295163529a912ba765ba9c43f70181e77",
-                "reference": "f0e4dd6295163529a912ba765ba9c43f70181e77",
+                "url": "https://api.github.com/repos/datastax/php-driver/zipball/b3803ce60bdcb0676386e8eff1893316bb57be4b",
+                "reference": "b3803ce60bdcb0676386e8eff1893316bb57be4b",
+                "shasum": ""
+            },
+            "require-dev": {
+                "behat/behat": "~3.0.6",
+                "ext-cassandra": "*",
+                "php": ">=5.5.0",
+                "phpunit/php-code-coverage": "~2.0",
+                "phpunit/php-token-stream": "~1.3",
+                "phpunit/phpunit": "~4.8",
+                "symfony/process": "~2.1"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Bulat Shakirzyanov",
+                    "email": "bulat.shakirzyanov@datastax.com",
+                    "homepage": "http://avalanche123.com"
+                },
+                {
+                    "name": "Michael Penick",
+                    "email": "michael.penick@datastax.com",
+                    "homepage": "https://github.com/mpenick"
+                }
+            ],
+            "description": "DataStax PHP Driver for Apache Cassandra",
+            "homepage": "http://datastax.github.io/php-driver/",
+            "keywords": [
+                "cassandra",
+                "database",
+                "datastax",
+                "driver",
+                "nosql"
+            ],
+            "time": "2017-05-16T02:25:28+00:00"
+        },
+        {
+            "name": "debril/feed-io",
+            "version": "v4.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alexdebril/feed-io.git",
+                "reference": "8da723501ca650517de81533c3faa7d2677c1302"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alexdebril/feed-io/zipball/8da723501ca650517de81533c3faa7d2677c1302",
+                "reference": "8da723501ca650517de81533c3faa7d2677c1302",
                 "shasum": ""
             },
             "require": {
@@ -64,7 +115,7 @@
                 "news",
                 "rss"
             ],
-            "time": "2018-01-12T22:39:41+00:00"
+            "time": "2018-04-20T16:27:24+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
