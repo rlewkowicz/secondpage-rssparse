@@ -72,11 +72,11 @@ class FeedController extends Controller
           ]
       ];
 
-        $consul_url = 'http://127.0.0.1:8500';
+        $consul_url = "http://".getenv('CONSUL_HOST').":8500";
         $client = new Client(['base_uri' => $consul_url]);
         $client->request('PUT', '/v1/kv/categories', ['body' => json_encode($categories)]);
 
-        $content=file_get_contents("http://127.0.0.1:8500/v1/kv/categories");
+        $content=file_get_contents("http://".getenv('CONSUL_HOST').":8500/v1/kv/categories");
         $data=get_object_vars(json_decode($content)[0]);
         $categories=(array)json_decode(base64_decode($data["Value"], true));
 
@@ -92,7 +92,7 @@ class FeedController extends Controller
         foreach ($categories[$slug] as $publicationKey => $publication) {
             $timestamp=0;
             $filename=$publicationKey.$slug;
-            $timestampget=@file_get_contents("http://127.0.0.1:8500/v1/kv/".rawurlencode($filename));
+            $timestampget=@file_get_contents("http://".getenv('CONSUL_HOST').":8500/v1/kv/".rawurlencode($filename));
             if ($timestampget){
               $timestampgetobject=get_object_vars(json_decode($timestampget)[0]);
               $timestamp=new \DateTime(base64_decode($timestampgetobject["Value"], true));
