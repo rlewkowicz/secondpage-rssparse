@@ -92,6 +92,7 @@ class FeedController extends Controller
         $publications = [];
 
         foreach ($categories[$slug] as $publicationKey => $publication) {
+          try{
             $timestamp=0;
             $filename=$publicationKey.$slug;
             $timestampget=@file_get_contents("http://".getenv('CONSUL_HOST').":8500/v1/kv/".rawurlencode($filename));
@@ -111,6 +112,9 @@ class FeedController extends Controller
             $result = $feedIo->readSince($publication, new \DateTime($dateDiff." seconds"))->getFeed();
             $publications[$publicationKey] = $result;
             $client->request('PUT', '/v1/kv/'.$filename, ['body' => (string)$d->format('Y-m-d H:i:s')]);
+          } catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+          }
         }
 
         $shell=[
