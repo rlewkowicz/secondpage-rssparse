@@ -65,7 +65,7 @@ class FeedController extends Controller
           [
             "Wall Street Journal" => "http://www.wsj.com/xml/rss/3_7031.xml",
             "New York Times" => "https://www.nytimes.com/services/xml/rss/nyt/Economy.xml",
-            "The Economist" => "https://www.economist.com/sections/markets-data/rss.xml"
+            // "The Economist" => "https://www.economist.com/sections/markets-data/rss.xml"
           ],
         "Science" =>
           [
@@ -112,9 +112,7 @@ class FeedController extends Controller
             $result = $feedIo->readSince($publication, new \DateTime($dateDiff." seconds"))->getFeed();
             $publications[$publicationKey] = $result;
             $client->request('PUT', '/v1/kv/'.$filename, ['body' => (string)$d->format('Y-m-d H:i:s')]);
-          } catch (Exception $e) {
-            echo 'Caught exception: ',  $e->getMessage(), "\n";
-          }
+          } catch (Exception $e) {}
         }
 
         $shell=[
