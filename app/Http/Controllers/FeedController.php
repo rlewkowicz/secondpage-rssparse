@@ -15,7 +15,8 @@ class FeedController extends Controller
         "Politics" =>
           [
             "Washington Post" => "http://feeds.washingtonpost.com/rss/politics",
-            "New York Times" => "https://www.nytimes.com/services/xml/rss/nyt/Politics.xml"
+            "New York Times" => "https://www.nytimes.com/services/xml/rss/nyt/Politics.xml",
+            "Politico" => "http://www.politico.com/rss/politics08.xml"
           ],
         "Opinion" =>
           [
@@ -65,12 +66,12 @@ class FeedController extends Controller
           [
             "Wall Street Journal" => "http://www.wsj.com/xml/rss/3_7031.xml",
             "New York Times" => "https://www.nytimes.com/services/xml/rss/nyt/Economy.xml",
+            "Politico" => "http://www.politico.com/rss/economy.xml"
             // "The Economist" => "https://www.economist.com/sections/markets-data/rss.xml"
           ],
         "Science" =>
           [
-            "New York Times" => "http://rss.nytimes.com/services/xml/rss/nyt/Science.xml",
-            "BBC" => "http://feeds.bbci.co.uk/news/video_and_audio/science_and_environment/rss.xml"
+            "New York Times" => "http://rss.nytimes.com/services/xml/rss/nyt/Science.xml"
           ]
       ];
 
