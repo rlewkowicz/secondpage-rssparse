@@ -38,7 +38,6 @@ class FeedController extends Controller
             "Wall Street Journal" => "http://www.wsj.com/xml/rss/3_7085.xml",
             "Washington Post" => "http://feeds.washingtonpost.com/rss/world",
             "New York Times" => "https://www.nytimes.com/services/xml/rss/nyt/World.xml",
-            "The Economist" => "https://www.economist.com/sections/international/rss.xml"
           ],
         "Business" =>
           [
@@ -60,7 +59,6 @@ class FeedController extends Controller
             "TechCrunch" => "http://feeds.feedburner.com/TechCrunch/",
             "Wall Street Journal" => "http://www.wsj.com/xml/rss/3_7455.xml",
             "New York Times" => "http://feeds.nytimes.com/nyt/rss/Technology",
-            "The Economist" => "https://www.economist.com/sections/science-technology/rss.xml"
           ],
         "Markets" =>
           [
