@@ -14,46 +14,46 @@ class FeedController extends Controller
         $categories = [
         "Politics" =>
           [
-            "Washington Post" => "http://feeds.washingtonpost.com/rss/politics",
+           // "Washington Post" => "http://feeds.washingtonpost.com/rss/politics",
             "New York Times" => "https://www.nytimes.com/services/xml/rss/nyt/Politics.xml",
             "Politico" => "http://www.politico.com/rss/politics08.xml"
           ],
         "Opinion" =>
           [
             "Wall Street Journal" => "http://www.wsj.com/xml/rss/3_7041.xml",
-            "Washington Post" => "http://feeds.washingtonpost.com/rss/opinions"
+           // "Washington Post" => "http://feeds.washingtonpost.com/rss/opinions"
           ],
         "Sports" =>
           [
-            "Washington Post" => "http://feeds.washingtonpost.com/rss/sports",
+            //"Washington Post" => "http://feeds.washingtonpost.com/rss/sports",
             "New York Times" => "https://www.nytimes.com/services/xml/rss/nyt/Sports.xml"
           ],
         "National" =>
           [
-            "Washington Post" => "http://feeds.washingtonpost.com/rss/national",
+            //"Washington Post" => "http://feeds.washingtonpost.com/rss/national",
             "New York Times" => "https://www.nytimes.com/services/xml/rss/nyt/US.xml"
           ],
         "World" =>
           [
             "Wall Street Journal" => "http://www.wsj.com/xml/rss/3_7085.xml",
-            "Washington Post" => "http://feeds.washingtonpost.com/rss/world",
+            //"Washington Post" => "http://feeds.washingtonpost.com/rss/world",
             "New York Times" => "https://www.nytimes.com/services/xml/rss/nyt/World.xml",
           ],
         "Business" =>
           [
             "Wall Street Journal" => "http://www.wsj.com/xml/rss/3_7014.xml",
-            "Washington Post" => "http://feeds.washingtonpost.com/rss/business",
+            //"Washington Post" => "http://feeds.washingtonpost.com/rss/business",
             "New York Times" => "http://feeds.nytimes.com/nyt/rss/Business"
           ],
         "Lifestyle" =>
           [
             "Wall Street Journal" => "http://www.wsj.com/xml/rss/3_7201.xml",
-            "Washington Post" => "http://feeds.washingtonpost.com/rss/lifestyle"
+            //"Washington Post" => "http://feeds.washingtonpost.com/rss/lifestyle"
           ],
-        "Entertainment" =>
-          [
-            "Washington Post" => "http://feeds.washingtonpost.com/rss/entertainment"
-          ],
+        //"Entertainment" =>
+         // [
+          //  "Washington Post" => "http://feeds.washingtonpost.com/rss/entertainment"
+         // ],
         "Technology" =>
           [
             "TechCrunch" => "http://feeds.feedburner.com/TechCrunch/",
