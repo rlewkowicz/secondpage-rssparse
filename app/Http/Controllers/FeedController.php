@@ -20,7 +20,7 @@ class FeedController extends Controller
           ],
         "Opinion" =>
           [
-            "Wall Street Journal" => "http://www.wsj.com/xml/rss/3_7041.xml",
+            "Wall Street Journal" => "https://feeds.a.dj.com/rss/RSSOpinion.xml",
            // "Washington Post" => "http://feeds.washingtonpost.com/rss/opinions"
           ],
         "Sports" =>
@@ -35,19 +35,19 @@ class FeedController extends Controller
           ],
         "World" =>
           [
-            "Wall Street Journal" => "http://www.wsj.com/xml/rss/3_7085.xml",
+            "Wall Street Journal" => "https://feeds.a.dj.com/rss/RSSWorldNews.xml",
             //"Washington Post" => "http://feeds.washingtonpost.com/rss/world",
             "New York Times" => "https://www.nytimes.com/services/xml/rss/nyt/World.xml",
           ],
         "Business" =>
           [
-            "Wall Street Journal" => "http://www.wsj.com/xml/rss/3_7014.xml",
+            "Wall Street Journal" => "https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml",
             //"Washington Post" => "http://feeds.washingtonpost.com/rss/business",
             "New York Times" => "http://feeds.nytimes.com/nyt/rss/Business"
           ],
         "Lifestyle" =>
           [
-            "Wall Street Journal" => "http://www.wsj.com/xml/rss/3_7201.xml",
+            "Wall Street Journal" => "https://feeds.a.dj.com/rss/RSSLifestyle.xml",
             //"Washington Post" => "http://feeds.washingtonpost.com/rss/lifestyle"
           ],
         //"Entertainment" =>
@@ -57,12 +57,12 @@ class FeedController extends Controller
         "Technology" =>
           [
             "TechCrunch" => "http://feeds.feedburner.com/TechCrunch/",
-            "Wall Street Journal" => "http://www.wsj.com/xml/rss/3_7455.xml",
+            "Wall Street Journal" => "https://feeds.a.dj.com/rss/RSSWSJD.xml",
             "New York Times" => "http://feeds.nytimes.com/nyt/rss/Technology",
           ],
         "Markets" =>
           [
-            "Wall Street Journal" => "http://www.wsj.com/xml/rss/3_7031.xml",
+            "Wall Street Journal" => "https://feeds.a.dj.com/rss/RSSMarketsMain.xml",
             "New York Times" => "https://www.nytimes.com/services/xml/rss/nyt/Economy.xml",
             "Politico" => "http://www.politico.com/rss/economy.xml"
             // "The Economist" => "https://www.economist.com/sections/markets-data/rss.xml"
